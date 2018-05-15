@@ -1,27 +1,51 @@
 <!-- Add event binding for form submit... -->
 <form 
   style="margin-bottom: 10px"
+
+  (ngSubmit)="submit(form)"
+  #form="ngForm"
   >
 
   <!-- Apply ngModel to this input... -->
   <input
-      class="input"
-      type="text"
-      placeholder="title"
+    name="title"
+    class="input"
+    type="text"
+    placeholder="title"
+
+    ngModel
+    #title="ngModel"
+    required
+    minlength="3"
+    maxlength="30"
   />
+
   <!-- Markup for error messages... -->
-  <div class="error">
+  <div *ngIf="title.touched && !title.valid" class="error">
+    <div *ngIf="title.errors.required">
+      Title is required
+    </div>
+    <div *ngIf="title.errors.minlength">
+      Title must be at least {{ title.errors.minlength.requiredLength }} characters    
+    </div>
   </div>
 
   <!-- Apply ngModel to this input... -->
   <input
-      class="input"
-      type="text"
-      placeholder="description"
+    name="description"
+    class="input"
+    type="text"
+    placeholder="description"
+
+    ngModel
+    #description="ngModel"
   />
 
   <!-- Disable button if form is invalid. -->
-  <button type="submit">
-      Save
+  <button 
+    [disabled]="!form.valid"
+    type="submit"
+  >
+    Save
   </button>
 </form>

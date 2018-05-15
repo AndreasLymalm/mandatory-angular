@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { Task } from '../constants';
 
 @Component({
   selector: 'task-form',
@@ -7,5 +8,12 @@ import { Component } from '@angular/core';
 })
 export class TaskformComponent {
 
+  @Output() taskAdded = new EventEmitter();
+
   constructor() {}
+
+  submit(form){
+    this.taskAdded.emit(form.value);
+    form.reset();
+  }
 }

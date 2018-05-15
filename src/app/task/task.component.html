@@ -1,12 +1,23 @@
 <div class="task">
   <div class="header">
       <div>
-        <!-- Render title here... -->
+        {{title}}
       </div>
-      <!-- Markup for dropdown menu here... -->
+      <select 
+        ngModel
+        #statusSelect="ngModel"
+        (change)="changeStatus(statusSelect)"
+      >
+        <option 
+          *ngFor="let statusType of utilService.getStatusTypes()"
+          [selected]="statusType === currentStatusType"
+        >
+          {{statusType}}
+        </option>
+      </select>
   </div>
   <hr>
   <div class="body">
-      <!-- Render description here... -->
+      {{description}}
   </div>
 </div>

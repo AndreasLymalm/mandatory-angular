@@ -2,12 +2,23 @@
 
   <!-- Add click event binding for this button... -->
   <button 
+    (click)="toggleForm()"
     style="margin: 20px 0"
     >
     New Task
   </button>
   
+  <task-form 
+    *ngIf="isFormVisible"
+    (taskAdded)="handleTaskAdded($event)"  
+  ></task-form>
+
   <div class="lists">
     <!-- Markup for task lists here... -->
+    <task-list 
+      *ngFor="let statusType of utilService.getStatusTypes()"
+      [statusType]="statusType"
+    >
+    </task-list>
   </div>
 </div>
