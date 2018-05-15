@@ -12,13 +12,12 @@ export class TaskComponent {
   @Input() task: Task;
   @Output() statusChanged = new EventEmitter();
 
-  utilService = new UtilService();
   id: Number;
   title: String;
   description: String;
   currentStatusType: StatusType;
 
-  constructor() {}
+  constructor(private utilService: UtilService) {}
 
   ngOnInit(){
     console.log("Init task");

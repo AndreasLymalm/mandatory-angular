@@ -12,11 +12,10 @@ export class TasklistComponent implements OnInit, OnDestroy {
 
   @Input() statusType: StatusType;
   
-  taskService = new TaskService();
   taskList = [];
   subscription: Subscription;
 
-  constructor() {}
+  constructor(private taskService: TaskService) {}
 
   ngOnInit(){
     this.subscription = this.taskService.getTasks(this.statusType)

@@ -9,11 +9,9 @@ import { UtilService } from '../util.service';
 })
 export class TaskboardComponent {
 
-  taskService = new TaskService();
-  utilService = new UtilService();
   isFormVisible = false;
 
-  constructor() {}
+  constructor(private taskService: TaskService, private utilService: UtilService) {}
 
   toggleForm(){
     this.isFormVisible = !this.isFormVisible
