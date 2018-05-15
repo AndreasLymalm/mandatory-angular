@@ -4,13 +4,13 @@
         {{title}}
       </div>
       <select 
-        ngModel
-        #statusSelect="ngModel"
-        (change)="changeStatus(statusSelect)"
+        name="statusSelect"
+        (change)="changeStatus($event.target)"
       >
         <option 
           *ngFor="let statusType of utilService.getStatusTypes()"
-          [selected]="statusType === currentStatusType"
+          [ngValue]="currentStatusType"
+          [selected]="isCurrent(statusType)"
         >
           {{statusType}}
         </option>

@@ -11,9 +11,9 @@ export class TaskService {
   // an internal array of Task objects
   tasks = [{
     id: 0,
-    title: "sdf",
-    description: "sdfsdfas",
-    status: StatusType.InProgress
+    title: "Title Example",
+    description: "Description example",
+    status: StatusType.NotStarted
   }];
   // an instance of BehaviorSubject
   subject = new BehaviorSubject(this.tasks);

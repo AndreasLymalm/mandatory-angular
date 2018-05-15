@@ -36,4 +36,8 @@ export class TaskComponent {
       status: newStatus.value
     });
   }
+
+  isCurrent(status: StatusType){
+    return status === this.currentStatusType;
+  }
 }
